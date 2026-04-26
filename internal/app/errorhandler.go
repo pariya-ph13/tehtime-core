@@ -2,12 +2,10 @@ package app
 
 import (
 	"github.com/TehranTime/tehtime-core/internal/config"
-	conf "github.com/TehranTime/tehtime-core/internal/config"
 )
 
-func newSentry(cfg config.Config[conf.Config]) ports.ErrorHandler {
-	return sentry.New(sentry.Config{
-		Dsn:   cfg.GetConfig().Sentry.Dsn,
-		Debug: cfg.GetConfig().Debug,
-	})
+// newSentry is currently a no-op placeholder. Wire a real error handler here later.
+func newSentry(cfg *config.Config) error {
+	_ = cfg
+	return nil
 }

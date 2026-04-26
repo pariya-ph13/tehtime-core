@@ -3,6 +3,7 @@ package router
 import (
 	"context"
 	"fmt"
+
 	"github.com/gofiber/fiber/v2"
 	"go.uber.org/fx"
 )
@@ -37,33 +38,3 @@ func Router(
 		},
 	)
 }
-
-//func Router(
-//	lc fx.Lifecycle,
-//	logger ports.LoggerWithTraceID,
-//	httpService ports.HttpServer,
-//) {
-//
-//	httpService.SetRouteGroups("v2", nil, []ports.Route{
-//		{
-//			Method: http.MethodGet,
-//			Path:   "/test",
-//			Handler: func(c *ports.HttpContext) error {
-//				logger.Info(c.Context(), "just a test log")
-//				return c.JSON("here we are", "data")
-//			},
-//		},
-//	})
-//	lc.Append(
-//		fx.Hook{
-//			OnStart: func(ctx context.Context) error {
-//				go func() {
-//					err := httpService.Listen()
-//					if err != nil {
-//						log.Error(ctx, err.Error())
-//					}
-//				}()
-//				return nil
-//			},
-//		})
-//}

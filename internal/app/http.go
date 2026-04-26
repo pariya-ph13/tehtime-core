@@ -2,15 +2,11 @@ package app
 
 import (
 	"github.com/TehranTime/tehtime-core/internal/config"
-	conf "github.com/TehranTime/tehtime-core/internal/config"
+	"github.com/gofiber/fiber/v2"
 )
 
-func newHttp(cfg config.Config[conf.Config],
-	sentry ports.ErrorHandler) (ports.HttpServer, error) {
-	return fiber.New(
-		cfg.GetConfig().Debug,
-		cfg.GetConfig().HttpServer.Address,
-		uuid.New(),
-		sentry,
-	), nil
+func newHttp(cfg *config.Config) (*fiber.App, error) {
+	app := fiber.New()
+	_ = cfg
+	return app, nil
 }
