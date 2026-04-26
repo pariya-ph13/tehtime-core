@@ -1,0 +1,14 @@
+{{ define "content" }}
+<header>
+  <a class="button" hx-get="{{ .PrevLink }}" hx-target="#cal" hx-swap="innerHTML">Prev</a>
+  <strong style="margin: 0 .5rem;">{{ .Calendar | title }} — {{ .Year }}/{{ printf "%02d" .Month }}</strong>
+  <a class="button" hx-get="{{ .NextLink }}" hx-target="#cal" hx-swap="innerHTML">Next</a>
+  <div class="controls">
+    <a class="button" hx-get="/calendar?calendar=solar" hx-target="#cal" hx-swap="innerHTML">Solar</a>
+    <a class="button" hx-get="/calendar?calendar=gregorian" hx-target="#cal" hx-swap="innerHTML">Gregorian</a>
+  </div>
+</header>
+<div id="cal">
+  {{ template "_calendar" . }}
+</div>
+{{ end }}

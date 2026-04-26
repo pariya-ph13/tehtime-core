@@ -2,6 +2,7 @@ package app
 
 import (
 	timehandler "github.com/TehranTime/tehtime-core/internal/handler/time"
+	web "github.com/TehranTime/tehtime-core/internal/handler/web"
 	"github.com/TehranTime/tehtime-core/internal/router"
 	timesvc "github.com/TehranTime/tehtime-core/internal/service/time"
 	"go.uber.org/fx"
@@ -15,6 +16,7 @@ func Run() error {
 			newHttp,
 			timesvc.NewService,
 			timehandler.NewHandler,
+			web.NewWebHandler,
 		),
 		fx.Invoke(
 			router.Router,

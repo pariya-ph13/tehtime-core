@@ -1,0 +1,16 @@
+{{ define "_calendar" }}
+<div class="grid">
+  <div class="cell"><strong>Sun</strong></div>
+  <div class="cell"><strong>Mon</strong></div>
+  <div class="cell"><strong>Tue</strong></div>
+  <div class="cell"><strong>Wed</strong></div>
+  <div class="cell"><strong>Thu</strong></div>
+  <div class="cell"><strong>Fri</strong></div>
+  <div class="cell"><strong>Sat</strong></div>
+  {{ range .Weeks }}
+    {{ range . }}
+      <div class="cell {{ if not .InMonth }}muted{{ end }}">{{ .D }}</div>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}
