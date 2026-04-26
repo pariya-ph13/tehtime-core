@@ -8,7 +8,7 @@ import (
 
 func newHttp(cfg *config.Config) (*fiber.App, error) {
 	engine := html.New("./templates", ".html")
-	app := fiber.New(fiber.Config{Views: engine})
+	app := fiber.New(fiber.Config{Views: engine, ViewsLayout: "layouts/main"})
 	_ = cfg
 	return app, nil
 }
