@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	timehandler "github.com/TehranTime/tehtime-core/internal/handler/time"
 	"github.com/gofiber/fiber/v2"
 	"go.uber.org/fx"
 )
@@ -12,14 +13,10 @@ import (
 func Router(
 	lc fx.Lifecycle,
 	app *fiber.App,
+	th *timehandler.Handler,
 ) {
 	// Define a route group and add a route
-	app.Get("/v2/test", func(c *fiber.Ctx) error {
-		return c.JSON(fiber.Map{
-			"message": "here we are",
-			"data":    "data",
-		})
-	})
+	app.Get("/time", th.GetTime)
 
 	// Manage the server lifecycle
 	lc.Append(
