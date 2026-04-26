@@ -10,7 +10,6 @@ func Run() error {
 		fx.Provide(
 			NewConfig,
 			NewLogger,
-			newSentry,
 			newHttp,
 		),
 		fx.Invoke(

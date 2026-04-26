@@ -2,6 +2,7 @@ package app
 
 import (
 	"fmt"
+
 	"github.com/TehranTime/tehtime-core/internal/config"
 	"github.com/spf13/viper"
 )
@@ -19,4 +20,13 @@ func initConfig(config *config.Config) error {
 	}
 
 	return nil
+}
+
+// NewConfig constructs the application configuration instance and loads it from file/env.
+func NewConfig() (*config.Config, error) {
+	var cfg config.Config
+	if err := initConfig(&cfg); err != nil {
+		return nil, err
+	}
+	return &cfg, nil
 }
